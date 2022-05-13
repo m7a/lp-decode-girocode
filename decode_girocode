@@ -8,11 +8,11 @@ read -r z3
 read -r z4
 read -r z5
 read -r z6
-read -r z7
-read -r z8
-read -r z9
-read -r z10
-read -r z11
+read -r z7  || true
+read -r z8  || true
+read -r z9  || true
+read -r z10 || true
+read -r z11 || true
 #read -r z12
 
 if [ "$z2" != 001 ] && [ "$z2" != 002 ]; then

@@ -1,3 +1,9 @@
+mdvl-decode-girocode (1.0.1) stable; urgency=medium
+
+  * Add documentation. Fix optional fields being treated as mandatory.
+
+ -- Ma_Sys.ma Linux-Fan <Ma_Sys.ma@web.de>  Fri, 13 May 2022 19:44:40 +0200
+
 mdvl-decode-girocode (1.0.0) stable; urgency=medium
 
   * Package created with MDPC 2

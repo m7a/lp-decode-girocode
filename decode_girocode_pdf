@@ -1,11 +1,20 @@
 #!/bin/sh -eu
-# Ma_Sys.ma Script to Decode GiroCode PDFs 1.0.0, Copyright (c) 2022 Ma_Sys.ma.
+# Ma_Sys.ma Script to Decode GiroCode PDFs 1.0.1, Copyright (c) 2022 Ma_Sys.ma.
 # For further info send an e-mail to Ma_Sys.ma@web.de.
 
 # requires zbar-tools
 
+if [ $# = 0 ] || [ "$1" = "--help" ]; then
+	head -n 3 "$0" | tail -n 2 | cut -c 3-
+	echo
+	echo "USAGE $0 FILE.pdf"
+	exit 0
+fi
+
 tmp="/tmp/decode$$.png"
-convert -density 600 "$1" "$tmp"
-zbarimg -S*.enable=0 -Sqrcode.enable=1 "$tmp" | \
+# convert -density 600 "$1" "$tmp" # -- can fail with colorspace issue
+gs -sDEVICE=pngalpha "-sOutputFile=$tmp" -r600 -dBATCH -dFirstPage=1 \
+					-dLastPage=1 -dNOPAUSE "$1"
+zbarimg -q "-S*.enable=0" -Sqrcode.enable=1 "$tmp" | \
 					"$(dirname "$0")/decode_girocode"
 rm "$tmp"

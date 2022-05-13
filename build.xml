@@ -6,7 +6,7 @@
 <property name="mdpc.name"       value="mdvl-decode-girocode"/>
 <property name="mdpc.section"    value="graphics"/>
 <property name="mdpc.arch"       value="all"/>
-<property name="mdpc.recommends" value="zbar-tools"/>
+<property name="mdpc.recommends" value="zbar-tools, ghostscript"/>
 <property name="mdpc.descrs"
 			>Scripts to decode girocode from invoices.</property>
 <property name="mdpc.descrl">
