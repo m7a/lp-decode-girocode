@@ -1,0 +1,40 @@
+#!/bin/sh -e
+# Ma_Sys.ma Girocode Decoder 1.0.0, Copyright (c) 2018 Ma_Sys.ma.
+# For further info send an e-mail to Ma_Sys.ma@web.de.
+
+read -r z1
+read -r z2
+read -r z3
+read -r z4
+read -r z5
+read -r z6
+read -r z7
+read -r z8
+read -r z9
+read -r z10
+read -r z11
+#read -r z12
+
+if [ "$z2" != 001 ] && [ "$z2" != 002 ]; then
+	echo Unbekannte Version: $z2 1>&2
+	exit 1
+fi
+
+cat <<EOF
+--------------------------------------------------------------------------------
+
+Zahlungsempfänger $z6
+Ziel-IBAN         $z7
+Betrag            $z8
+EOF
+
+if [ -n "$z9" ] || [ -n "$z10" ]; then
+	echo "Zweck             $z9 / Referenz $z10"
+fi
+[ -z "$z11" ] || echo "Verwendungszweck  $z11"
+#[ -z "$z12" ] || echo "Hinweis           $z12"
+
+cat <<EOF
+
+--------------------------------------------------------------------------------
+EOF

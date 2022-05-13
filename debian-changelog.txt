@@ -1,0 +1,5 @@
+mdvl-decode-girocode (1.0.0) stable; urgency=medium
+
+  * Package created with MDPC 2
+
+ -- Ma_Sys.ma Linux-Fan <Ma_Sys.ma@web.de>  Fri, 13 May 2022 19:01:34 +0200

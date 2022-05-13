@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="build">
+
+<!-- APPLICATION METADATA -->
+<property name="masysma.target"  value="_"/> 
+<property name="mdpc.name"       value="mdvl-decode-girocode"/>
+<property name="mdpc.section"    value="graphics"/>
+<property name="mdpc.arch"       value="all"/>
+<property name="mdpc.recommends" value="zbar-tools"/>
+<property name="mdpc.descrs"
+			>Scripts to decode girocode from invoices.</property>
+<property name="mdpc.descrl">
+ Provides scripts `decode_girocode` and `decode_girocode_pdf` to process
+ barcode-scanner scanned girocode QR codes and pdf invoices respectively.
+ .
+ Outputs the payment details in German to stdout.
+</property>
+
+<property name="mdpc.file.install">
+decode_girocode /usr/bin
+decode_girocode_pdf /usr/bin
+</property>
+
+<!-- CI INTEGRATION -->
+<target name="package_triggered" depends="package">
+	<property name="masysma.ci.trigger" value="newver"/>
+</target>
+
+<!-- CONSTANT TPL IMPORT -->
+<property environment="env"/>
+<condition property="masysma.internal.includepath.rel" value="${env.MDVL_CI_PHOENIX_ROOT}" else=".."><isset property="env.MDVL_CI_PHOENIX_ROOT"/></condition>
+<property name="masysma.internal.includepath" location="${masysma.internal.includepath.rel}"/>
+<property name="masysma.internal.loadpath" value="${masysma.internal.includepath}/co-build/ant-build-template.xml"/>
+<condition property="masysma.internal.load" value="file://${masysma.internal.loadpath}" else="https://raw.githubusercontent.com/m7a/co-build/master/ant-build-template.xml"><resourceexists><file file="${masysma.internal.loadpath}"/></resourceexists></condition>
+<import><url url="${masysma.internal.load}"/></import>
+
+</project>
