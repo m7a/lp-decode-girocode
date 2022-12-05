@@ -1,3 +1,9 @@
+mdvl-decode-girocode (1.0.2) stable; urgency=medium
+
+  * Add optional page parameter.
+
+ -- Ma_Sys.ma Linux-Fan <info@masysma.net>  Mon, 05 Dec 2022 13:53:23 +0100
+
 mdvl-decode-girocode (1.0.1) stable; urgency=medium
 
   * Add documentation. Fix optional fields being treated as mandatory.

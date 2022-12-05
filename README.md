@@ -7,7 +7,7 @@ lang: de-DE
 author: ["Linux-Fan, Ma_Sys.ma (Ma_Sys.ma@web.de)"]
 keywords: ["girocode", "qrcode", "zbar-tools"]
 x-masysma-version: 1.0.0
-x-masysma-website: https://masysma.lima-city.de/32/decode_girocode.xhtml
+x-masysma-website: https://masysma.net/32/decode_girocode.xhtml
 x-masysma-repository: https://www.github.com/m7a/lp-decode-girocode
 x-masysma-owned: 1
 x-masysma-copyright: |

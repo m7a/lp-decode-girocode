@@ -7,14 +7,19 @@
 if [ $# = 0 ] || [ "$1" = "--help" ]; then
 	head -n 3 "$0" | tail -n 2 | cut -c 3-
 	echo
-	echo "USAGE $0 FILE.pdf"
+	echo "USAGE $0 FILE.pdf [PAGE]"
 	exit 0
+fi
+
+page=1
+if [ $# = 2 ]; then
+	page="$2"
 fi
 
 tmp="/tmp/decode$$.png"
 # convert -density 600 "$1" "$tmp" # -- can fail with colorspace issue
-gs -sDEVICE=pngalpha "-sOutputFile=$tmp" -r600 -dBATCH -dFirstPage=1 \
-					-dLastPage=1 -dNOPAUSE "$1"
+gs -sDEVICE=pngalpha "-sOutputFile=$tmp" -r600 -dBATCH "-dFirstPage=$page" \
+					"-dLastPage=$page" -dNOPAUSE "$1"
 zbarimg -q "-S*.enable=0" -Sqrcode.enable=1 "$tmp" | \
 					"$(dirname "$0")/decode_girocode"
 rm "$tmp"
